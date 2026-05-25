@@ -199,7 +199,7 @@ nav {
   display: inline-block;
   width: 8px; height: 8px;
   border-radius: 50%;
-  background: #f59e0b;
+  background: #4ade80;
   flex-shrink: 0;
 }
 
@@ -456,8 +456,8 @@ code {
 }
 
 .badge-draft {
-  background: #fef3c7;
-  color: #92400e;
+  background: #e0f0ff;
+  color: #1d4e7a;
 }
 
 .badge-active {
@@ -669,12 +669,12 @@ footer {
   .footer-inner { flex-direction: column; }
 }
 
-/* ── Draft Notice ── */
+/* ── Release Notice ── */
 
 .draft-notice {
-  background: #fef3c7;
-  border-left: 4px solid #f59e0b;
-  color: #78350f;
+  background: #eff6ff;
+  border-left: 4px solid #1d6fa4;
+  color: #1e3a5f;
   padding: 14px 20px;
   border-radius: 0 var(--radius) var(--radius) 0;
   font-size: 14px;
