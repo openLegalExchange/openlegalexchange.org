@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CLEAR Attorney Directory · Open Legal Exchange</title>
+  <meta name="description" content="A permissioned referral-discovery layer for attorneys and legal organizations. Search verified attorney referral profiles by jurisdiction, practice area, language, and referral preferences.">
+  <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="directory.css">
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="nav-brand">
+      <span class="brand-name">Open Legal Exchange</span>
+      <span class="brand-tag">v0.1 Public Draft</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="/spec/">Specification</a></li>
+      <li><a href="/clear/">CLEAR Module</a></li>
+      <li><a href="/attorneys/" aria-current="page">Attorney Directory</a></li>
+      <li><a href="https://github.com/openlegalexchange/ole">GitHub</a></li>
+    </ul>
+    <button class="nav-menu-btn" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero dir-hero">
+  <div class="container hero-content">
+    <div class="hero-eyebrow">CLEAR Module · Permissioned Referral Discovery</div>
+    <h1>CLEAR Attorney Directory</h1>
+    <p class="hero-lead">
+      A permissioned referral-discovery layer for attorneys and legal organizations.
+      Search verified attorney referral profiles by jurisdiction, practice area, language, and referral preferences.
+    </p>
+    <div class="btn-group">
+      <a href="https://github.com/openlegalexchange/ole/discussions" class="btn btn-primary">Create a referral profile</a>
+      <a href="https://github.com/openlegalexchange/ole/blob/main/spec/v0.1/clear.md" class="btn btn-secondary">Read CLEAR v0.1</a>
+    </div>
+    <div class="dir-notice" role="note">
+      <strong>Notice:</strong> The CLEAR Attorney Directory is a proposed discovery layer for
+      attorney-to-attorney and legal-organization referrals. Open Legal Exchange does not provide
+      legal advice, recommend lawyers, rank attorneys, or replace attorney judgment, conflict checks,
+      client consent, or professional responsibility obligations.
+    </div>
+    <div class="hero-draft">
+      Public Draft for Comment · Not a legal advice or attorney-matching service · openlegalexchange.org
+    </div>
+  </div>
+</section>
+
+<!-- Search & Directory -->
+<section class="dir-search-section" id="directory">
+  <div class="container">
+
+    <!-- Search bar -->
+    <div class="dir-search-bar">
+      <label for="dir-search-input" class="sr-only">Search attorney referral profiles</label>
+      <div class="dir-search-input-wrap">
+        <svg class="dir-search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+        <input
+          id="dir-search-input"
+          type="search"
+          class="dir-search-input"
+          placeholder="Search by name, firm, practice area, county, language…"
+          autocomplete="off"
+          autocorrect="off"
+          spellcheck="false"
+          aria-label="Search attorney referral profiles"
+        >
+        <button id="dir-search-clear" class="dir-search-clear" aria-label="Clear search" hidden>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Filters -->
+    <div class="dir-filters" id="dir-filters">
+      <div class="dir-filters-row">
+
+        <div class="dir-filter-group">
+          <label for="filter-state" class="dir-filter-label">State</label>
+          <select id="filter-state" class="dir-filter-select" aria-label="Filter by state">
+            <option value="">All states</option>
+            <option value="FL">FL — Florida</option>
+          </select>
+        </div>
+
+        <div class="dir-filter-group">
+          <label for="filter-county" class="dir-filter-label">County</label>
+          <select id="filter-county" class="dir-filter-select" aria-label="Filter by county">
+            <option value="">All counties</option>
+            <option value="Miami-Dade">Miami-Dade</option>
+            <option value="Broward">Broward</option>
+            <option value="Palm Beach">Palm Beach</option>
+            <option value="Monroe">Monroe</option>
+            <option value="Hillsborough">Hillsborough</option>
+            <option value="Orange">Orange</option>
+            <option value="Duval">Duval</option>
+          </select>
+        </div>
+
+        <div class="dir-filter-group">
+          <label for="filter-practice" class="dir-filter-label">Practice area</label>
+          <select id="filter-practice" class="dir-filter-select" aria-label="Filter by practice area">
+            <option value="">All practice areas</option>
+            <option value="hoa_disputes">HOA disputes</option>
+            <option value="condominium_law">Condominium law</option>
+            <option value="personal_injury">Personal injury</option>
+            <option value="family_law">Family law</option>
+            <option value="probate">Probate</option>
+            <option value="estate_planning">Estate planning</option>
+            <option value="real_estate">Real estate</option>
+            <option value="immigration">Immigration</option>
+            <option value="criminal_defense">Criminal defense</option>
+            <option value="business_law">Business law</option>
+            <option value="landlord_tenant">Landlord tenant</option>
+            <option value="employment_law">Employment law</option>
+          </select>
+        </div>
+
+        <div class="dir-filter-group">
+          <label for="filter-language" class="dir-filter-label">Language</label>
+          <select id="filter-language" class="dir-filter-select" aria-label="Filter by language">
+            <option value="">All languages</option>
+            <option value="en">English</option>
+            <option value="es">Spanish</option>
+            <option value="fr">French</option>
+            <option value="ht">Creole</option>
+            <option value="pt">Portuguese</option>
+          </select>
+        </div>
+
+        <div class="dir-filter-group">
+          <label for="filter-credential" class="dir-filter-label">Credential status</label>
+          <select id="filter-credential" class="dir-filter-select" aria-label="Filter by credential status">
+            <option value="">Any status</option>
+            <option value="verified">Verified</option>
+            <option value="pending_verification">Pending verification</option>
+            <option value="self_declared">Self-declared</option>
+          </select>
+        </div>
+
+      </div>
+
+      <div class="dir-filters-toggles">
+        <label class="dir-toggle-label">
+          <input type="checkbox" id="filter-accepts-referrals" class="dir-toggle-input" aria-label="Accepting referrals only">
+          <span class="dir-toggle-track" aria-hidden="true"></span>
+          <span class="dir-toggle-text">Accepting referrals</span>
+        </label>
+        <label class="dir-toggle-label">
+          <input type="checkbox" id="filter-atty-to-atty" class="dir-toggle-input" aria-label="Attorney-to-attorney only">
+          <span class="dir-toggle-track" aria-hidden="true"></span>
+          <span class="dir-toggle-text">Attorney-to-attorney only</span>
+        </label>
+        <label class="dir-toggle-label">
+          <input type="checkbox" id="filter-clear-enabled" class="dir-toggle-input" aria-label="CLEAR-enabled only">
+          <span class="dir-toggle-track" aria-hidden="true"></span>
+          <span class="dir-toggle-text">CLEAR-enabled</span>
+        </label>
+      </div>
+    </div>
+
+    <!-- Active chips + count -->
+    <div class="dir-results-meta" id="dir-results-meta" aria-live="polite" aria-atomic="true">
+      <div id="dir-active-chips" class="dir-chips"></div>
+      <div class="dir-results-right">
+        <span id="dir-results-count" class="dir-results-count"></span>
+        <button id="dir-clear-filters" class="dir-clear-filters-btn" hidden>
+          Clear all filters
+        </button>
+      </div>
+    </div>
+
+    <!-- Loading state -->
+    <div id="dir-loading" class="dir-state-box" hidden>
+      <div class="dir-spinner" aria-hidden="true"></div>
+      <p>Loading directory…</p>
+    </div>
+
+    <!-- Error state -->
+    <div id="dir-error" class="dir-state-box dir-state-error" hidden role="alert">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      <p>Unable to load directory profiles. Please try again.</p>
+    </div>
+
+    <!-- Empty state -->
+    <div id="dir-empty" class="dir-state-box" hidden role="status">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <p class="dir-empty-title">No matching referral profiles found.</p>
+      <p class="dir-empty-desc">Try changing the practice area, county, language, or referral availability filters.</p>
+      <button class="btn btn-outline" id="dir-empty-reset" style="margin-top:16px;font-size:13px;">Reset all filters</button>
+    </div>
+
+    <!-- Results grid -->
+    <div id="dir-results" class="dir-results-grid" role="list" aria-label="Attorney referral profiles">
+    </div>
+
+    <!-- Compliance notice -->
+    <p class="dir-results-notice" id="dir-compliance-inline">
+      Directory results are informational and based on participating profile data.
+      Open Legal Exchange does not recommend, rank, endorse, or guarantee attorneys.
+      Users are responsible for conflict checks, client consent, professional responsibility compliance, and independent verification.
+    </p>
+
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <span class="brand-name">Open Legal Exchange</span>
+      <span>openlegalexchange.org</span>
+    </div>
+    <div class="footer-links">
+      <a href="/spec/">Specification</a>
+      <a href="/clear/">CLEAR Module</a>
+      <a href="/attorneys/">Attorney Directory</a>
+      <a href="https://github.com/openlegalexchange/ole">GitHub</a>
+      <a href="https://github.com/openlegalexchange/ole/blob/main/CONTRIBUTING.md">Contribute</a>
+      <a href="https://github.com/openlegalexchange/ole/blob/main/LICENSE">License (CC BY 4.0)</a>
+    </div>
+  </div>
+  <div class="footer-meta">
+    Founding Architecture v0.1, Public Draft for Comment · May 2026 ·
+    Specification text: CC BY 4.0 · Schemas and code: Apache 2.0 ·
+    Founded by Philippe Chaunu, CyVine LLC, Miami FL ·
+    Reference implementation: CertusGate
+  </div>
+  <div class="footer-meta" style="margin-top:8px;">
+    The CLEAR Attorney Directory is part of the OLE v0.1 public draft and is intended for review
+    and early implementation discussion. This is not a legal advice service, attorney-client
+    matchmaking platform, or endorsement of any attorney listed.
+  </div>
+</footer>
+
+<!-- Profile Modal -->
+<div id="profile-modal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-title" hidden>
+  <div class="modal-panel" tabindex="-1">
+    <div class="modal-header">
+      <div>
+        <div id="modal-eyebrow" class="modal-eyebrow"></div>
+        <h2 id="modal-title" class="modal-title"></h2>
+        <div id="modal-firm" class="modal-firm"></div>
+      </div>
+      <button class="modal-close" id="modal-close-btn" aria-label="Close profile">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+    <div class="modal-body" id="modal-body">
+      <!-- Dynamically populated -->
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline" id="modal-referral-btn" disabled>
+        Send structured referral
+        <span class="coming-soon-tag">Coming soon</span>
+      </button>
+      <button class="btn btn-secondary modal-close-action" id="modal-close-footer">Close</button>
+    </div>
+    <div class="modal-disclaimer">
+      This profile is based on self-reported or third-party verified data. Open Legal Exchange does not
+      recommend, rank, endorse, certify, or guarantee this attorney. Users are responsible for
+      independent verification, conflict checks, client consent, and all professional responsibility obligations.
+    </div>
+  </div>
+</div>
+
+<!-- Sample data notice banner -->
+<div id="sample-data-notice" class="sample-data-notice" role="note">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+  <span>Development preview — all profiles are fictional sample data. Not for production use.</span>
+</div>
+
+<script src="directory.js"></script>
+</body>
+</html>

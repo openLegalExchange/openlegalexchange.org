@@ -1,0 +1,354 @@
+{
+  "_meta": {
+    "resourceType": "DirectoryProfileCollection",
+    "oleVersion": "0.1",
+    "module": "clear",
+    "description": "Sample attorney referral profiles for CLEAR directory development. All profiles are fictional and for development purposes only.",
+    "sampleData": true,
+    "generatedAt": "2026-05-25T00:00:00Z"
+  },
+  "profiles": [
+    {
+      "resourceType": "DirectoryProfile",
+      "id": "ole_dir_maria_santos",
+      "oleVersion": "0.1",
+      "module": "clear",
+      "sampleProfile": true,
+      "displayName": "Maria Santos",
+      "slug": "maria-santos",
+      "firmName": "Santos HOA Law, P.A.",
+      "city": "Miami",
+      "county": "Miami-Dade",
+      "state": "FL",
+      "country": "US",
+      "practiceAreas": ["hoa_disputes", "condominium_law", "real_estate_litigation"],
+      "practiceAreaLabels": ["HOA disputes", "Condominium law", "Real estate litigation"],
+      "languages": ["en", "es"],
+      "languageLabels": ["English", "Spanish"],
+      "acceptsReferrals": true,
+      "attorneyToAttorneyOnly": true,
+      "clearEnabled": true,
+      "acceptsDirectConsumerContact": false,
+      "credentialStatus": "verified",
+      "credentialSummary": {
+        "credentialType": "bar_admission",
+        "jurisdiction": "FL",
+        "status": "active",
+        "verifiedAt": "2026-05-25T00:00:00Z",
+        "verificationSource": "public_bar_record"
+      },
+      "referralPreferences": {
+        "requiresClientConsentBeforeTransmission": true,
+        "preferredReferralMethod": "clear_packet",
+        "notes": "Accepts attorney-to-attorney HOA and condominium dispute referrals in South Florida. CLEAR-enabled via CertusGate. Conflict check required before referral accepted."
+      },
+      "visibility": {
+        "scope": "network_visible"
+      }
+    },
+    {
+      "resourceType": "DirectoryProfile",
+      "id": "ole_dir_james_okafor",
+      "oleVersion": "0.1",
+      "module": "clear",
+      "sampleProfile": true,
+      "displayName": "James O. Okafor",
+      "slug": "james-okafor",
+      "firmName": "Okafor Injury Law Group",
+      "city": "Fort Lauderdale",
+      "county": "Broward",
+      "state": "FL",
+      "country": "US",
+      "practiceAreas": ["personal_injury", "civil_litigation"],
+      "practiceAreaLabels": ["Personal injury", "Civil litigation"],
+      "languages": ["en"],
+      "languageLabels": ["English"],
+      "acceptsReferrals": true,
+      "attorneyToAttorneyOnly": true,
+      "clearEnabled": true,
+      "acceptsDirectConsumerContact": false,
+      "credentialStatus": "verified",
+      "credentialSummary": {
+        "credentialType": "bar_admission",
+        "jurisdiction": "FL",
+        "status": "active",
+        "verifiedAt": "2026-04-15T00:00:00Z",
+        "verificationSource": "public_bar_record"
+      },
+      "referralPreferences": {
+        "requiresClientConsentBeforeTransmission": true,
+        "preferredReferralMethod": "clear_packet",
+        "notes": "Accepts structured referrals for personal injury matters in Broward and Palm Beach counties. Contingency fee basis. Fee arrangement per FL Bar Rule 4-1.5(g). Minimum case value thresholds apply."
+      },
+      "visibility": {
+        "scope": "network_visible"
+      }
+    },
+    {
+      "resourceType": "DirectoryProfile",
+      "id": "ole_dir_sofia_hernandez",
+      "oleVersion": "0.1",
+      "module": "clear",
+      "sampleProfile": true,
+      "displayName": "Sofía Hernández-Reyes",
+      "slug": "sofia-hernandez-reyes",
+      "firmName": "Hernández Family & Immigration Law",
+      "city": "West Palm Beach",
+      "county": "Palm Beach",
+      "state": "FL",
+      "country": "US",
+      "practiceAreas": ["family_law", "immigration", "estate_planning"],
+      "practiceAreaLabels": ["Family law", "Immigration", "Estate planning"],
+      "languages": ["en", "es", "pt"],
+      "languageLabels": ["English", "Spanish", "Portuguese"],
+      "acceptsReferrals": true,
+      "attorneyToAttorneyOnly": false,
+      "clearEnabled": true,
+      "acceptsDirectConsumerContact": false,
+      "credentialStatus": "pending_verification",
+      "credentialSummary": {
+        "credentialType": "bar_admission",
+        "jurisdiction": "FL",
+        "status": "active",
+        "verifiedAt": null,
+        "verificationSource": "self_declared"
+      },
+      "referralPreferences": {
+        "requiresClientConsentBeforeTransmission": true,
+        "preferredReferralMethod": "clear_packet",
+        "notes": "Accepts referrals from attorneys and legal organizations. Trilingual practice. Immigration matters — removal, DACA, family petitions. Family law — dissolution, custody, modifications. Referrals from legal aid organizations welcome."
+      },
+      "visibility": {
+        "scope": "network_visible"
+      }
+    },
+    {
+      "resourceType": "DirectoryProfile",
+      "id": "ole_dir_david_lefebvre",
+      "oleVersion": "0.1",
+      "module": "clear",
+      "sampleProfile": true,
+      "displayName": "David Lefebvre",
+      "slug": "david-lefebvre",
+      "firmName": "Lefebvre Probate & Estate Law",
+      "city": "Miami",
+      "county": "Miami-Dade",
+      "state": "FL",
+      "country": "US",
+      "practiceAreas": ["probate", "estate_planning", "trust_administration"],
+      "practiceAreaLabels": ["Probate", "Estate planning", "Trust administration"],
+      "languages": ["en", "fr", "ht"],
+      "languageLabels": ["English", "French", "Creole"],
+      "acceptsReferrals": true,
+      "attorneyToAttorneyOnly": true,
+      "clearEnabled": false,
+      "acceptsDirectConsumerContact": false,
+      "credentialStatus": "self_declared",
+      "credentialSummary": {
+        "credentialType": "bar_admission",
+        "jurisdiction": "FL",
+        "status": "active",
+        "verifiedAt": null,
+        "verificationSource": "self_declared"
+      },
+      "referralPreferences": {
+        "requiresClientConsentBeforeTransmission": true,
+        "preferredReferralMethod": "email",
+        "notes": "Accepts probate and estate planning referrals from attorneys. Trilingual — English, French, Haitian Creole. Primarily serves Miami-Dade Haitian and Francophone communities. Not yet CLEAR-enabled; structured referrals accepted via email with OLE packet format."
+      },
+      "visibility": {
+        "scope": "network_visible"
+      }
+    },
+    {
+      "resourceType": "DirectoryProfile",
+      "id": "ole_dir_carmen_rodriguez",
+      "oleVersion": "0.1",
+      "module": "clear",
+      "sampleProfile": true,
+      "displayName": "Carmen L. Rodríguez",
+      "slug": "carmen-rodriguez",
+      "firmName": "Rodríguez Business & Real Estate Law",
+      "city": "Orlando",
+      "county": "Orange",
+      "state": "FL",
+      "country": "US",
+      "practiceAreas": ["business_law", "real_estate", "landlord_tenant"],
+      "practiceAreaLabels": ["Business law", "Real estate", "Landlord tenant"],
+      "languages": ["en", "es"],
+      "languageLabels": ["English", "Spanish"],
+      "acceptsReferrals": true,
+      "attorneyToAttorneyOnly": true,
+      "clearEnabled": true,
+      "acceptsDirectConsumerContact": false,
+      "credentialStatus": "verified",
+      "credentialSummary": {
+        "credentialType": "bar_admission",
+        "jurisdiction": "FL",
+        "status": "active",
+        "verifiedAt": "2026-05-01T00:00:00Z",
+        "verificationSource": "public_bar_record"
+      },
+      "referralPreferences": {
+        "requiresClientConsentBeforeTransmission": true,
+        "preferredReferralMethod": "clear_packet",
+        "notes": "Accepts structured referrals for business formation, commercial real estate, and landlord-tenant disputes in Central Florida. Bilingual practice. CLEAR-enabled. Referral fee arrangements available per Florida Bar rules."
+      },
+      "visibility": {
+        "scope": "network_visible"
+      }
+    },
+    {
+      "resourceType": "DirectoryProfile",
+      "id": "ole_dir_alexandra_kim",
+      "oleVersion": "0.1",
+      "module": "clear",
+      "sampleProfile": true,
+      "displayName": "Alexandra Kim",
+      "slug": "alexandra-kim",
+      "firmName": "Kim Employment & Labor Law",
+      "city": "Tampa",
+      "county": "Hillsborough",
+      "state": "FL",
+      "country": "US",
+      "practiceAreas": ["employment_law", "business_law"],
+      "practiceAreaLabels": ["Employment law", "Business law"],
+      "languages": ["en"],
+      "languageLabels": ["English"],
+      "acceptsReferrals": true,
+      "attorneyToAttorneyOnly": true,
+      "clearEnabled": true,
+      "acceptsDirectConsumerContact": false,
+      "credentialStatus": "pending_verification",
+      "credentialSummary": {
+        "credentialType": "bar_admission",
+        "jurisdiction": "FL",
+        "status": "active",
+        "verifiedAt": null,
+        "verificationSource": "self_declared"
+      },
+      "referralPreferences": {
+        "requiresClientConsentBeforeTransmission": true,
+        "preferredReferralMethod": "clear_packet",
+        "notes": "Accepts employment and labor law referrals from attorneys and legal organizations. Handles wrongful termination, wage disputes, non-compete review, and employment contracts. CLEAR-enabled. Hillsborough and Pinellas counties primarily."
+      },
+      "visibility": {
+        "scope": "network_visible"
+      }
+    },
+    {
+      "resourceType": "DirectoryProfile",
+      "id": "ole_dir_marcus_thompson",
+      "oleVersion": "0.1",
+      "module": "clear",
+      "sampleProfile": true,
+      "displayName": "Marcus D. Thompson",
+      "slug": "marcus-thompson",
+      "firmName": "Thompson Criminal Defense",
+      "city": "Jacksonville",
+      "county": "Duval",
+      "state": "FL",
+      "country": "US",
+      "practiceAreas": ["criminal_defense", "civil_rights"],
+      "practiceAreaLabels": ["Criminal defense", "Civil rights"],
+      "languages": ["en"],
+      "languageLabels": ["English"],
+      "acceptsReferrals": true,
+      "attorneyToAttorneyOnly": true,
+      "clearEnabled": false,
+      "acceptsDirectConsumerContact": false,
+      "credentialStatus": "verified",
+      "credentialSummary": {
+        "credentialType": "bar_admission",
+        "jurisdiction": "FL",
+        "status": "active",
+        "verifiedAt": "2026-03-10T00:00:00Z",
+        "verificationSource": "public_bar_record"
+      },
+      "referralPreferences": {
+        "requiresClientConsentBeforeTransmission": true,
+        "preferredReferralMethod": "email",
+        "notes": "Accepts criminal defense referrals from attorneys. Felony and misdemeanor matters in Duval, Clay, and St. Johns counties. Not currently CLEAR-enabled; OLE packet referrals accepted by email. No referral fee on criminal matters."
+      },
+      "visibility": {
+        "scope": "network_visible"
+      }
+    },
+    {
+      "resourceType": "DirectoryProfile",
+      "id": "ole_dir_isabelle_laurent",
+      "oleVersion": "0.1",
+      "module": "clear",
+      "sampleProfile": true,
+      "displayName": "Isabelle Laurent",
+      "slug": "isabelle-laurent",
+      "firmName": "Laurent Real Estate & Housing Law",
+      "city": "Miami",
+      "county": "Miami-Dade",
+      "state": "FL",
+      "country": "US",
+      "practiceAreas": ["real_estate", "landlord_tenant", "hoa_disputes"],
+      "practiceAreaLabels": ["Real estate", "Landlord tenant", "HOA disputes"],
+      "languages": ["en", "fr", "ht"],
+      "languageLabels": ["English", "French", "Creole"],
+      "acceptsReferrals": true,
+      "attorneyToAttorneyOnly": false,
+      "clearEnabled": true,
+      "acceptsDirectConsumerContact": false,
+      "credentialStatus": "self_declared",
+      "credentialSummary": {
+        "credentialType": "bar_admission",
+        "jurisdiction": "FL",
+        "status": "active",
+        "verifiedAt": null,
+        "verificationSource": "self_declared"
+      },
+      "referralPreferences": {
+        "requiresClientConsentBeforeTransmission": true,
+        "preferredReferralMethod": "clear_packet",
+        "notes": "Accepts real estate, landlord-tenant, and HOA referrals. Accepts referrals from attorneys and legal aid organizations. Trilingual — English, French, Haitian Creole. Serves Little Haiti and Opa-locka communities. CLEAR-enabled."
+      },
+      "visibility": {
+        "scope": "network_visible"
+      }
+    },
+    {
+      "resourceType": "DirectoryProfile",
+      "id": "ole_dir_priya_nair",
+      "oleVersion": "0.1",
+      "module": "clear",
+      "sampleProfile": true,
+      "displayName": "Priya Nair",
+      "slug": "priya-nair",
+      "firmName": "Nair Immigration Law",
+      "city": "Miami",
+      "county": "Miami-Dade",
+      "state": "FL",
+      "country": "US",
+      "practiceAreas": ["immigration", "employment_law"],
+      "practiceAreaLabels": ["Immigration", "Employment law"],
+      "languages": ["en", "es"],
+      "languageLabels": ["English", "Spanish"],
+      "acceptsReferrals": true,
+      "attorneyToAttorneyOnly": false,
+      "clearEnabled": true,
+      "acceptsDirectConsumerContact": false,
+      "credentialStatus": "verified",
+      "credentialSummary": {
+        "credentialType": "bar_admission",
+        "jurisdiction": "FL",
+        "status": "active",
+        "verifiedAt": "2026-05-10T00:00:00Z",
+        "verificationSource": "public_bar_record"
+      },
+      "referralPreferences": {
+        "requiresClientConsentBeforeTransmission": true,
+        "preferredReferralMethod": "clear_packet",
+        "notes": "Accepts immigration referrals from attorneys and legal organizations. Family-based petitions, employment visas, DACA, asylum, removal defense. Referrals from legal aid organizations welcome. CLEAR-enabled. South Florida focus."
+      },
+      "visibility": {
+        "scope": "network_visible"
+      }
+    }
+  ]
+}
