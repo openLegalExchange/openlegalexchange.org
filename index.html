@@ -242,8 +242,56 @@
   </div>
 </section>
 
-<!-- Get Involved -->
+<!-- For Implementers -->
 <section style="background:#f8fafc;">
+  <div class="container">
+    <div class="section-label">For Software Vendors</div>
+    <h2 class="section-title">No permission needed.<br>Just implement.</h2>
+    <p class="section-desc">
+      OLE is an open specification. The schemas and code are Apache 2.0. The spec text is CC BY 4.0.
+      Any platform can implement OLE/CLEAR without a license fee, vendor agreement, or certification requirement.
+    </p>
+
+    <ol class="workflow-steps">
+      <li>
+        <div class="step-num"></div>
+        <div class="step-content">
+          <strong>Read the spec</strong>
+          <p>Start with <a href="/spec/v0.1/clear/">CLEAR</a> for the referral module, then <a href="/spec/v0.1/core/">Core</a> for shared conventions. The full spec is on GitHub and readable on this site.</p>
+        </div>
+      </li>
+      <li>
+        <div class="step-num"></div>
+        <div class="step-content">
+          <strong>Produce a valid Referral packet</strong>
+          <p>Pre-Tier (Packet) conformance requires only that you read and write valid OLE JSON. No API endpoints needed. Hours of work, not weeks.</p>
+        </div>
+      </li>
+      <li>
+        <div class="step-num"></div>
+        <div class="step-content">
+          <strong>Add the four exchange endpoints</strong>
+          <p>Tier 1 (Exchange) adds <code>POST /referrals</code>, <code>GET /referrals/{id}</code>, <code>POST /referrals/{id}/status</code>, and webhook delivery. Implement the <a href="/spec/v0.1/conformance/">conformance checklist</a>.</p>
+        </div>
+      </li>
+      <li>
+        <div class="step-num"></div>
+        <div class="step-content">
+          <strong>Self-declare and ship</strong>
+          <p>Publish a <code>/.well-known/ole-discovery.json</code> discovery document with <code>"conformanceStatus": "self_declared"</code>. File a GitHub issue to list your implementation.</p>
+        </div>
+      </li>
+    </ol>
+
+    <div class="btn-group" style="margin-top:40px;">
+      <a href="/spec/v0.1/clear/" class="btn btn-primary">CLEAR Specification →</a>
+      <a href="/spec/v0.1/conformance/" class="btn btn-outline">Conformance Checklist</a>
+    </div>
+  </div>
+</section>
+
+<!-- Get Involved -->
+<section>
   <div class="container">
     <div class="section-label">Community</div>
     <h2 class="section-title">v0.1 is published.<br>Your feedback shapes v0.2.</h2>
