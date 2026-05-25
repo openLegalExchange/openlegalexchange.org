@@ -71,9 +71,22 @@ nav {
 
 .nav-brand {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   gap: 10px;
   text-decoration: none;
+}
+
+.nav-logo {
+  width: 26px;
+  height: 26px;
+  flex-shrink: 0;
+  display: block;
+}
+
+.nav-brand-text {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
 }
 
 .nav-brand .brand-name {
