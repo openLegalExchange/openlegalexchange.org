@@ -77,10 +77,14 @@ nav {
 }
 
 .nav-logo {
-  width: 26px;
-  height: 26px;
+  width: 30px;
+  height: 30px;
   flex-shrink: 0;
   display: block;
+  border-radius: 6px;
+  background: #ffffff;
+  padding: 3px;
+  object-fit: contain;
 }
 
 .nav-brand-text {
