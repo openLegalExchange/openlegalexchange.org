@@ -7,7 +7,7 @@
   --blue-light: #2b8ac8;
   --slate: #475569;
   --text: #0f172a;
-  --muted: #64748b;
+  --muted: #607080;
   --border: #e2e8f0;
   --bg: #ffffff;
   --bg-alt: #f8fafc;
@@ -101,7 +101,7 @@ nav {
 }
 
 .nav-brand .brand-tag {
-  color: rgba(255,255,255,0.45);
+  color: rgba(255,255,255,0.72);
   font-size: 12px;
   font-weight: 400;
   letter-spacing: 0.04em;
@@ -152,9 +152,9 @@ nav {
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--blue-light);
+  color: rgba(255,255,255,0.92);
   margin-bottom: 20px;
-  border: 1px solid rgba(43,138,200,0.35);
+  border: 1px solid rgba(255,255,255,0.4);
   padding: 4px 12px;
   border-radius: 20px;
 }
@@ -186,7 +186,7 @@ nav {
   align-items: center;
   gap: 8px;
   font-size: 13px;
-  color: rgba(255,255,255,0.5);
+  color: rgba(255,255,255,0.82);
   background: rgba(255,255,255,0.06);
   border: 1px solid rgba(255,255,255,0.12);
   padding: 8px 16px;
@@ -230,7 +230,7 @@ nav {
 .btn-secondary {
   background: rgba(255,255,255,0.1);
   color: #ffffff;
-  border: 1px solid rgba(255,255,255,0.2);
+  border: 1px solid rgba(255,255,255,0.5);
 }
 .btn-secondary:hover { background: rgba(255,255,255,0.16); text-decoration: none; }
 
@@ -425,7 +425,7 @@ td code, th code {
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.45);
+  color: rgba(255,255,255,0.68);
   font-family: var(--font-mono);
 }
 
@@ -655,7 +655,7 @@ footer {
   margin-right: auto;
   padding-left: 24px;
   padding-right: 24px;
-  color: rgba(255,255,255,0.35);
+  color: rgba(255,255,255,0.62);
 }
 
 /* ── Responsive ── */
