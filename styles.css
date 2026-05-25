@@ -47,7 +47,7 @@ img { max-width: 100%; }
 }
 
 section { padding: 72px 0; }
-section:nth-child(even) { background: var(--bg-alt); }
+section:nth-child(even):not(.hero) { background: var(--bg-alt); }
 
 /* ── Navigation ── */
 
