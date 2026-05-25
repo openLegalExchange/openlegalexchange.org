@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CLEAR — Legal Referral Exchange · Open Legal Exchange</title>
+  <meta name="description" content="CLEAR is the first OLE module. It defines a structured, trackable, interoperable exchange model for legal referrals between attorneys, firms, and legal service providers.">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="nav-brand">
+      <span class="brand-name">Open Legal Exchange</span>
+      <span class="brand-tag">v0.1 Public Draft</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="/spec/">Specification</a></li>
+      <li><a href="/clear/">CLEAR Module</a></li>
+      <li><a href="https://github.com/openlegalexchange/ole">GitHub</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero" style="padding:64px 0 56px;">
+  <div class="container hero-content">
+    <div class="hero-eyebrow">First Module · Active Development</div>
+    <h1>CLEAR<br><em>Legal Referral Exchange</em></h1>
+    <p class="hero-lead">
+      CLEAR defines a structured, trackable, interoperable exchange model for legal referrals.
+      It is the first OLE module and the primary implementation path in v0.1.
+    </p>
+    <div class="btn-group">
+      <a href="https://github.com/openlegalexchange/ole/blob/main/spec/v0.1/clear.md" class="btn btn-primary">Read the CLEAR Spec →</a>
+      <a href="https://github.com/openlegalexchange/ole/blob/main/openapi/v0.1/ole-clear-v0.1.yaml" class="btn btn-secondary">OpenAPI Spec</a>
+    </div>
+    <div class="hero-draft">
+      Public Draft for Comment · No production certification in v0.1 · openlegalexchange.org
+    </div>
+  </div>
+</section>
+
+<!-- The Problem -->
+<section style="background:#f8fafc;">
+  <div class="container">
+    <div class="section-label">The Problem</div>
+    <h2 class="section-title">Legal referrals are broken.</h2>
+    <p class="section-desc">
+      Attorney-to-attorney referrals are among the most common events in legal practice.
+      They are also among the most unstructured. No standard format. No tracking. No consent record.
+      No way to know if a referral was received, accepted, or closed.
+    </p>
+
+    <div class="thesis-block">
+      <p>"Roxana gets an HOA call she can't handle. She refers it to Maria. CLEAR makes that referral structured, trackable, and interoperable."</p>
+    </div>
+
+    <ul class="feature-list">
+      <li>
+        <div class="feature-text">
+          <strong>Structured Format</strong>
+          <span>Machine-readable JSON referral packet any platform can send or receive.</span>
+        </div>
+      </li>
+      <li>
+        <div class="feature-text">
+          <strong>Status Tracking</strong>
+          <span>14 defined statuses with explicit transition rules and fork/termination paths.</span>
+        </div>
+      </li>
+      <li>
+        <div class="feature-text">
+          <strong>Consent First</strong>
+          <span>ConsentRecord required before any prospect data is included in a referral.</span>
+        </div>
+      </li>
+      <li>
+        <div class="feature-text">
+          <strong>Fee Arrangement</strong>
+          <span>Structured fee agreement fields referencing applicable bar rules.</span>
+        </div>
+      </li>
+      <li>
+        <div class="feature-text">
+          <strong>Webhook Events</strong>
+          <span>Real-time notifications for status changes, acceptance, declination, and close.</span>
+        </div>
+      </li>
+      <li>
+        <div class="feature-text">
+          <strong>Federated</strong>
+          <span>Each firm or platform hosts its own endpoints. No central referral database.</span>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- Workflow -->
+<section>
+  <div class="container">
+    <div class="section-label">Workflow</div>
+    <h2 class="section-title">Minimum referral workflow</h2>
+    <p class="section-desc">
+      Five stages define the minimum viable referral lifecycle. Each stage has defined transition
+      rules. Fork and termination paths are explicit.
+    </p>
+
+    <ol class="workflow-steps">
+      <li>
+        <div class="step-num"></div>
+        <div class="step-content">
+          <strong>Initiated</strong>
+          <p>Originating attorney creates a <code>Referral</code> resource with matter summary, prospect consent, and fee arrangement. Status: <code>initiated</code>.</p>
+        </div>
+      </li>
+      <li>
+        <div class="step-num"></div>
+        <div class="step-content">
+          <strong>Sent</strong>
+          <p>The referral is transmitted to the receiving attorney's OLE endpoint. A <code>referral.sent</code> webhook event is fired. Status: <code>sent</code>.</p>
+        </div>
+      </li>
+      <li>
+        <div class="step-num"></div>
+        <div class="step-content">
+          <strong>Acknowledged</strong>
+          <p>Receiving attorney confirms receipt. A <code>StatusUpdate</code> resource is returned. Status: <code>acknowledged</code>.</p>
+        </div>
+      </li>
+      <li>
+        <div class="step-num"></div>
+        <div class="step-content">
+          <strong>Accepted or Declined</strong>
+          <p>Receiving attorney accepts or declines the referral, with optional reason. If declined, the originating attorney may initiate a new referral to a different attorney.</p>
+        </div>
+      </li>
+      <li>
+        <div class="step-num"></div>
+        <div class="step-content">
+          <strong>Closed</strong>
+          <p>Referral reaches a terminal state: <code>engaged</code> (client retained), <code>no_action</code> (client did not proceed), <code>withdrawn</code>, or <code>expired</code>.</p>
+        </div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- Status Model -->
+<section style="background:#f8fafc;">
+  <div class="container">
+    <div class="section-label">Status Model</div>
+    <h2 class="section-title">14 defined statuses.</h2>
+    <p class="section-desc">
+      Every CLEAR referral carries an explicit status. Transitions are defined. Terminal states are marked.
+    </p>
+
+    <div class="table-wrap">
+      <table class="status-table">
+        <thead>
+          <tr><th>Status</th><th>Stage</th><th>Description</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><code>initiated</code></td><td>1 — Initiation</td><td>Referral created, not yet transmitted</td></tr>
+          <tr><td><code>sent</code></td><td>2 — Transmission</td><td>Transmitted to receiving attorney</td></tr>
+          <tr><td><code>delivered</code></td><td>2 — Transmission</td><td>Delivery confirmed at transport level</td></tr>
+          <tr><td><code>acknowledged</code></td><td>3 — Receipt</td><td>Receiving attorney confirmed receipt</td></tr>
+          <tr><td><code>under_review</code></td><td>3 — Receipt</td><td>Receiving attorney is evaluating</td></tr>
+          <tr><td><code>pending_conflict_check</code></td><td>3 — Receipt</td><td>Conflict check in progress (do not proceed)</td></tr>
+          <tr><td><code>accepted</code></td><td>4 — Decision</td><td>Receiving attorney accepted</td></tr>
+          <tr><td><code>declined</code></td><td>4 — Decision</td><td>Receiving attorney declined (terminal for this recipient)</td></tr>
+          <tr><td><code>pending_client_decision</code></td><td>5 — Close</td><td>Client has not yet decided to engage</td></tr>
+          <tr><td><code>engaged</code></td><td>5 — Close (terminal)</td><td>Client retained receiving attorney</td></tr>
+          <tr><td><code>no_action</code></td><td>5 — Close (terminal)</td><td>Client did not proceed</td></tr>
+          <tr><td><code>withdrawn</code></td><td>Any (terminal)</td><td>Originating attorney withdrew the referral</td></tr>
+          <tr><td><code>expired</code></td><td>Any (terminal)</td><td>Referral timed out without response</td></tr>
+          <tr><td><code>error</code></td><td>Any</td><td>Processing error — see attached StatusUpdate</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- API Surface -->
+<section>
+  <div class="container">
+    <div class="section-label">API</div>
+    <h2 class="section-title">Minimum API surface</h2>
+    <p class="section-desc">
+      Tier 1 (Exchange) requires four REST endpoints and webhook support.
+      Authentication: OAuth 2.0 bearer token. Format: JSON. Transport: HTTPS.
+    </p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Method</th><th>Path</th><th>Description</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>POST</code></td>
+            <td><code>/referrals</code></td>
+            <td>Create and transmit a new referral</td>
+          </tr>
+          <tr>
+            <td><code>GET</code></td>
+            <td><code>/referrals/{id}</code></td>
+            <td>Retrieve a referral by ID</td>
+          </tr>
+          <tr>
+            <td><code>POST</code></td>
+            <td><code>/referrals/{id}/status</code></td>
+            <td>Submit a status update for a referral</td>
+          </tr>
+          <tr>
+            <td><code>GET</code></td>
+            <td><code>/referrals</code></td>
+            <td>List referrals (with filters)</td>
+          </tr>
+          <tr>
+            <td><code>POST</code></td>
+            <td><code>/webhooks</code></td>
+            <td>Register a webhook endpoint</td>
+          </tr>
+          <tr>
+            <td><code>GET</code></td>
+            <td><code>/.well-known/ole-discovery.json</code></td>
+            <td>OLE discovery document</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3 style="margin-top:40px;color:var(--navy);">Webhook Event Catalog</h3>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Event</th><th>Trigger</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><code>referral.sent</code></td><td>Referral transmitted to receiving attorney</td></tr>
+          <tr><td><code>referral.acknowledged</code></td><td>Receiving attorney confirmed receipt</td></tr>
+          <tr><td><code>referral.accepted</code></td><td>Receiving attorney accepted the referral</td></tr>
+          <tr><td><code>referral.declined</code></td><td>Receiving attorney declined the referral</td></tr>
+          <tr><td><code>referral.status_updated</code></td><td>Any status change not covered above</td></tr>
+          <tr><td><code>referral.closed</code></td><td>Referral reached a terminal state</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- Quick Start -->
+<section style="background:#f8fafc;">
+  <div class="container">
+    <div class="section-label">Quick Start</div>
+    <h2 class="section-title">Start with a Packet.</h2>
+    <p class="section-desc">
+      Pre-Tier (Packet) is the simplest conformance level — read and write OLE JSON.
+      Here is the minimum valid CLEAR referral document.
+    </p>
+
+    <div class="code-block">
+      <div class="code-header">
+        <span class="code-lang">JSON — Minimum Referral (Pre-Tier: Packet)</span>
+      </div>
+      <pre>{
+  "resourceType": "Referral",
+  "id": "ole_ref_2026_0522_001",
+  "oleVersion": "0.1",
+  "module": "clear",
+  "createdAt": "2026-05-22T16:45:00-04:00",
+  "status": "sent",
+  "originatingActor": "ole_actor_roxana_tejeda",
+  "receivingActor": "ole_actor_maria_santos",
+  "matterSummary": {
+    "practiceArea": "SALI:HOA-LAW",
+    "jurisdiction": { "country": "US", "state": "FL" },
+    "description": "HOA dispute — notice requirements under F.S. 718.112"
+  },
+  "consentRecord": "ole_consent_2026_0522_001",
+  "feeArrangement": {
+    "type": "referral_fee",
+    "ruleReference": "FL Bar Rule 4-1.5",
+    "percentage": 25
+  },
+  "visibility": { "scope": "participant_visible" },
+  "extensions": {}
+}</pre>
+    </div>
+
+    <div class="btn-group" style="margin-top:32px;">
+      <a href="https://github.com/openlegalexchange/ole/blob/main/examples/v0.1/referral-sent.json" class="btn btn-primary">Full Example →</a>
+      <a href="https://github.com/openlegalexchange/ole/blob/main/spec/v0.1/clear.md" class="btn btn-outline">CLEAR Specification</a>
+    </div>
+  </div>
+</section>
+
+<!-- Reference Implementation -->
+<section>
+  <div class="container">
+    <div class="section-label">Reference Implementation</div>
+    <h2 class="section-title">CertusGate</h2>
+    <p class="section-desc">
+      CertusGate by CyVine LLC is the first reference implementation of OLE/CLEAR.
+      The CLEAR Referral Tracker provides free lifetime accounts for verified attorneys.
+    </p>
+    <div class="btn-group">
+      <a href="https://github.com/openlegalexchange/ole/blob/main/spec/v0.1/clear.md" class="btn btn-primary">Read the Full CLEAR Spec →</a>
+      <a href="https://github.com/openlegalexchange/ole/blob/main/openapi/v0.1/ole-clear-v0.1.yaml" class="btn btn-outline">OpenAPI 3.1.0 Spec</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <span class="brand-name">Open Legal Exchange</span>
+      <span>openlegalexchange.org</span>
+    </div>
+    <div class="footer-links">
+      <a href="/">Home</a>
+      <a href="/spec/">Specification</a>
+      <a href="/clear/">CLEAR Module</a>
+      <a href="https://github.com/openlegalexchange/ole">GitHub</a>
+      <a href="https://github.com/openlegalexchange/ole/blob/main/LICENSE">License (CC BY 4.0)</a>
+    </div>
+  </div>
+  <div class="footer-meta">
+    Founding Architecture v0.1, Public Draft for Comment · May 2026 ·
+    Specification text: CC BY 4.0 · Schemas and code: Apache 2.0 ·
+    Founded by Philippe Chaunu, CyVine LLC, Miami FL · Reference implementation: CertusGate
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Specification — Open Legal Exchange v0.1</title>
+  <meta name="description" content="The OLE v0.1 specification — founding architecture, core data model, CLEAR module, governance, security, conformance, and standards relationships.">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="nav-brand">
+      <span class="brand-name">Open Legal Exchange</span>
+      <span class="brand-tag">v0.1 Public Draft</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="/spec/">Specification</a></li>
+      <li><a href="/clear/">CLEAR Module</a></li>
+      <li><a href="https://github.com/openlegalexchange/ole">GitHub</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero" style="padding:64px 0 56px;">
+  <div class="container hero-content">
+    <div class="hero-eyebrow">Specification</div>
+    <h1>OLE v0.1<br>Specification Documents</h1>
+    <p class="hero-lead">
+      All specification documents for the Open Legal Exchange Protocol, Founding Architecture v0.1.
+      Public Draft for Comment.
+    </p>
+    <div class="hero-draft">
+      These are draft documents. No production conformance certification is available in v0.1.
+    </div>
+  </div>
+</section>
+
+<!-- Spec Documents -->
+<section>
+  <div class="container">
+    <div class="section-label">Documents</div>
+    <h2 class="section-title">Specification documents</h2>
+    <p class="section-desc">
+      The v0.1 specification is organized into focused documents.
+      Start with the Founding Architecture for the full vision, then Core for data conventions,
+      then the module specification you need.
+    </p>
+
+    <div class="spec-grid">
+
+      <div class="spec-card">
+        <div class="spec-card-label">spec/v0.1</div>
+        <h3>Founding Architecture</h3>
+        <p>Vision, the six governance primitives, the governance loop, adoption levels, the module architecture, trust model, and closing narrative.</p>
+        <a href="https://github.com/openlegalexchange/ole/blob/main/spec/v0.1/founding-architecture.md" class="card-link">View on GitHub →</a>
+      </div>
+
+      <div class="spec-card">
+        <div class="spec-card-label">spec/v0.1</div>
+        <h3>Core Data Conventions</h3>
+        <p>Resource envelope, identifier policy, external IDs, extension policy, visibility scope, ConsentRecord, AuditEvent, error model, idempotency, and webhook signing.</p>
+        <a href="https://github.com/openlegalexchange/ole/blob/main/spec/v0.1/core.md" class="card-link">View on GitHub →</a>
+      </div>
+
+      <div class="spec-card" style="border-top: 3px solid #1d6fa4;">
+        <div class="spec-card-label">spec/v0.1 · Active Module</div>
+        <h3>CLEAR — Legal Referral Exchange</h3>
+        <p>Minimum referral workflow, status model, resource set, participant roles, API surface, webhook catalog, and security requirements.</p>
+        <a href="/clear/" class="card-link">CLEAR module details →</a>
+      </div>
+
+      <div class="spec-card">
+        <div class="spec-card-label">spec/v0.1</div>
+        <h3>Security Profile</h3>
+        <p>Transport security, authentication (JWT/OAuth 2.0), webhook signing (HMAC-SHA256), data protection, consent, audit requirements, and API security.</p>
+        <a href="https://github.com/openlegalexchange/ole/blob/main/spec/v0.1/security.md" class="card-link">View on GitHub →</a>
+      </div>
+
+      <div class="spec-card">
+        <div class="spec-card-label">spec/v0.1</div>
+        <h3>Conformance</h3>
+        <p>Conformance profiles for Pre-Tier (Packet) and Tier 1 (Exchange), self-declaration checklist, and conformance status values.</p>
+        <a href="https://github.com/openlegalexchange/ole/blob/main/spec/v0.1/conformance.md" class="card-link">View on GitHub →</a>
+      </div>
+
+      <div class="spec-card">
+        <div class="spec-card-label">spec/v0.1</div>
+        <h3>Governance</h3>
+        <p>Stewardship model, decision-making process, contribution workflow, IP policy, versioning scheme, and stewardship maturity model.</p>
+        <a href="https://github.com/openlegalexchange/ole/blob/main/spec/v0.1/governance.md" class="card-link">View on GitHub →</a>
+      </div>
+
+      <div class="spec-card">
+        <div class="spec-card-label">spec/v0.1</div>
+        <h3>Relationship to Existing Standards</h3>
+        <p>OLE's relationship to SALI LMSS, LEDES, Akoma Ntoso, LegalRuleML, NIEM, W3C Verifiable Credentials, and FHIR — with mapping examples.</p>
+        <a href="https://github.com/openlegalexchange/ole/blob/main/spec/v0.1/relationship-to-existing-standards.md" class="card-link">View on GitHub →</a>
+      </div>
+
+      <div class="spec-card">
+        <div class="spec-card-label">spec/v0.1</div>
+        <h3>Publication Checklist</h3>
+        <p>Pre-publication review checklist: document completeness, consistency checks, technical validation, safety review, known gaps, and publication steps.</p>
+        <a href="https://github.com/openlegalexchange/ole/blob/main/spec/v0.1/publication-checklist.md" class="card-link">View on GitHub →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Artifacts -->
+<section style="background:#f8fafc;">
+  <div class="container">
+    <div class="section-label">Machine-Readable Artifacts</div>
+    <h2 class="section-title">Schemas, examples, and OpenAPI</h2>
+    <p class="section-desc">
+      All schemas use JSON Schema 2020-12. Examples are valid OLE JSON documents.
+      The OpenAPI spec is a draft — full normative API requirements will be finalized in v0.2.
+    </p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Artifact</th>
+            <th>Path</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Resource Envelope Schema</td>
+            <td><code>schemas/v0.1/resource-envelope.schema.json</code></td>
+            <td>JSON Schema for the OLE common resource envelope</td>
+          </tr>
+          <tr>
+            <td>Actor Schema</td>
+            <td><code>schemas/v0.1/actor.schema.json</code></td>
+            <td>JSON Schema for OLE Actor resources (human and AI)</td>
+          </tr>
+          <tr>
+            <td>ConsentRecord Schema</td>
+            <td><code>schemas/v0.1/consent-record.schema.json</code></td>
+            <td>JSON Schema for ConsentRecord resources</td>
+          </tr>
+          <tr>
+            <td>AuditEvent Schema</td>
+            <td><code>schemas/v0.1/audit-event.schema.json</code></td>
+            <td>JSON Schema for AuditEvent resources (includes AI audit sub-object)</td>
+          </tr>
+          <tr>
+            <td>Referral Schema</td>
+            <td><code>schemas/v0.1/referral.schema.json</code></td>
+            <td>JSON Schema for CLEAR Referral resources</td>
+          </tr>
+          <tr>
+            <td>Actor (attorney) example</td>
+            <td><code>examples/v0.1/actor-attorney.json</code></td>
+            <td>Human professional Actor</td>
+          </tr>
+          <tr>
+            <td>Actor (AI agent) example</td>
+            <td><code>examples/v0.1/actor-ai-agent.json</code></td>
+            <td>AI agent Actor with capabilities and constraints</td>
+          </tr>
+          <tr>
+            <td>ConsentRecord example</td>
+            <td><code>examples/v0.1/consent-record.json</code></td>
+            <td>ConsentRecord for a legal referral</td>
+          </tr>
+          <tr>
+            <td>AuditEvent example</td>
+            <td><code>examples/v0.1/audit-event.json</code></td>
+            <td>AuditEvent for a referral.sent action</td>
+          </tr>
+          <tr>
+            <td>Referral (sent) example</td>
+            <td><code>examples/v0.1/referral-sent.json</code></td>
+            <td>Complete CLEAR Referral resource</td>
+          </tr>
+          <tr>
+            <td>StatusUpdate example</td>
+            <td><code>examples/v0.1/status-update-received.json</code></td>
+            <td>CLEAR StatusUpdate resource</td>
+          </tr>
+          <tr>
+            <td>OpenAPI 3.1.0 (CLEAR)</td>
+            <td><code>openapi/v0.1/ole-clear-v0.1.yaml</code></td>
+            <td>Draft OpenAPI specification for the CLEAR module API</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- What is out of scope -->
+<section>
+  <div class="container">
+    <div class="section-label">Scope</div>
+    <h2 class="section-title">What v0.1 does not define</h2>
+    <p class="section-desc">These items are intentionally deferred to v0.2 or v1.0.</p>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr><th>Item</th><th>Deferred To</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Final normative JSON Schemas with full field constraints</td><td>v0.2</td></tr>
+          <tr><td>CLEAR sandbox environment for schema validation</td><td>v0.2</td></tr>
+          <tr><td>Fee settlement resource and workflow</td><td>v0.2</td></tr>
+          <tr><td>Document exchange protocol</td><td>v0.2</td></tr>
+          <tr><td>Conflict-check integration protocol</td><td>v0.2</td></tr>
+          <tr><td>ConsentRecord revocation API</td><td>v0.2</td></tr>
+          <tr><td>Formal Contributor License Agreement</td><td>Before working group</td></tr>
+          <tr><td>Conformance certification program</td><td>v1.0</td></tr>
+          <tr><td>Machine-testable conformance test suite</td><td>v1.0</td></tr>
+          <tr><td>Trademark usage policy</td><td>v1.0</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <span class="brand-name">Open Legal Exchange</span>
+      <span>openlegalexchange.org</span>
+    </div>
+    <div class="footer-links">
+      <a href="/">Home</a>
+      <a href="/spec/">Specification</a>
+      <a href="/clear/">CLEAR Module</a>
+      <a href="https://github.com/openlegalexchange/ole">GitHub</a>
+      <a href="https://github.com/openlegalexchange/ole/blob/main/LICENSE">License (CC BY 4.0)</a>
+    </div>
+  </div>
+  <div class="footer-meta">
+    Founding Architecture v0.1, Public Draft for Comment · May 2026 ·
+    Specification text: CC BY 4.0 · Schemas and code: Apache 2.0 ·
+    Founded by Philippe Chaunu, CyVine LLC, Miami FL
+  </div>
+</footer>
+
+</body>
+</html>

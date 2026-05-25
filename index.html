@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Open Legal Exchange — The Open Legal Exchange Protocol</title>
+  <meta name="description" content="OLE is an open protocol for describing, connecting, and exchanging legal and governance data across systems. The first module, CLEAR, defines structured legal referral exchange.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="nav-brand">
+      <span class="brand-name">Open Legal Exchange</span>
+      <span class="brand-tag">v0.1 Public Draft</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="/spec/">Specification</a></li>
+      <li><a href="/clear/">CLEAR Module</a></li>
+      <li><a href="https://github.com/openlegalexchange/ole">GitHub</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero" style="padding-top:96px;padding-bottom:88px;background:#0f2240;">
+  <div class="container hero-content">
+    <div class="hero-eyebrow">Founding Architecture v0.1 — Public Draft for Comment</div>
+    <h1>Law is the operating system<br>of every government.<br><em>OLE is the API.</em></h1>
+    <p class="hero-lead">
+      Open Legal Exchange is an open protocol for describing, connecting, and exchanging
+      legal and governance data across systems — without requiring everyone to use the same platform.
+    </p>
+    <div class="btn-group">
+      <a href="/spec/" class="btn btn-primary">Read the Specification →</a>
+      <a href="/clear/" class="btn btn-secondary">CLEAR Module</a>
+    </div>
+    <div class="hero-draft">
+      Public Draft for Comment · No certification available in v0.1 · openlegalexchange.org
+    </div>
+  </div>
+</section>
+
+<!-- What is OLE -->
+<section style="background:#f8fafc;">
+  <div class="container">
+    <div class="section-label">The Problem</div>
+    <h2 class="section-title">Referrals, filings, compliance records.<br>Every system speaks a different language.</h2>
+    <p class="section-desc">
+      Legal and governance data is trapped in silos. Referrals between attorneys are unstructured.
+      Credentials are unverifiable across systems. Regulatory impact is invisible to the people
+      who write the rules. OLE is the shared language that changes this.
+    </p>
+    <ul class="feature-list">
+      <li>
+        <div class="feature-text">
+          <strong>Structured Referrals</strong>
+          <span>CLEAR defines a machine-readable referral format any platform can send or receive.</span>
+        </div>
+      </li>
+      <li>
+        <div class="feature-text">
+          <strong>Portable Identity</strong>
+          <span>Actors carry verified credentials across firms, platforms, and jurisdictions.</span>
+        </div>
+      </li>
+      <li>
+        <div class="feature-text">
+          <strong>Privacy by Default</strong>
+          <span>Minimum data, AES-256 at rest, time-limited document URLs, explicit consent.</span>
+        </div>
+      </li>
+      <li>
+        <div class="feature-text">
+          <strong>Federated Architecture</strong>
+          <span>Every system hosts its own endpoints. No central database. No single point of failure.</span>
+        </div>
+      </li>
+      <li>
+        <div class="feature-text">
+          <strong>AI-Ready</strong>
+          <span>AI agents are first-class OLE actors with identity, audit trails, and human oversight.</span>
+        </div>
+      </li>
+      <li>
+        <div class="feature-text">
+          <strong>Open Standard</strong>
+          <span>CC BY 4.0 specification text. Apache 2.0 schemas and code. No vendor lock-in.</span>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- The Six Primitives -->
+<section>
+  <div class="container">
+    <div class="section-label">Architecture</div>
+    <h2 class="section-title">Six governance primitives.<br>One universal loop.</h2>
+    <p class="section-desc">
+      Every governance system — from a solo attorney's referral to a planetary governance protocol —
+      is composed of the same six building blocks.
+    </p>
+
+    <div class="thesis-block">
+      <p>Rule → Institution → Actor → Action → Impact → Feedback → Rule (amended)</p>
+    </div>
+
+    <div class="primitives-grid">
+      <div class="primitive-card">
+        <div class="primitive-icon">Primitive 1</div>
+        <h3>Rule</h3>
+        <p>An authoritative directive — statute, regulation, professional rule, bylaw, or contract — that creates, constrains, or authorizes governance activity.</p>
+      </div>
+      <div class="primitive-card">
+        <div class="primitive-icon">Primitive 2</div>
+        <h3>Institution</h3>
+        <p>A body authorized by rules to perform governance functions — law firms, bar associations, courts, agencies, and HOA boards.</p>
+      </div>
+      <div class="primitive-card">
+        <div class="primitive-icon">Primitive 3</div>
+        <h3>Actor</h3>
+        <p>Any participant — human, organizational, or artificial — operating within a governance system. AI agents are first-class OLE actors.</p>
+      </div>
+      <div class="primitive-card">
+        <div class="primitive-icon">Primitive 4</div>
+        <h3>Action</h3>
+        <p>Any event within a governance system: referral, filing, vote, inspection, decision. Actions link actors, institutions, and rules.</p>
+      </div>
+      <div class="primitive-card">
+        <div class="primitive-icon">Primitive 5</div>
+        <h3>Impact</h3>
+        <p>Aggregated, anonymized, privacy-preserving signals derived from governance actions. Impact data never contains PII.</p>
+      </div>
+      <div class="primitive-card">
+        <div class="primitive-icon">Primitive 6</div>
+        <h3>Feedback</h3>
+        <p>Structured signals flowing from impact data back to rulemaking. Feedback closes the governance loop — the rarest and most valuable primitive.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CLEAR Module -->
+<section style="background:#f8fafc;">
+  <div class="container">
+    <div class="section-label">First Module</div>
+    <h2 class="section-title">CLEAR — Legal Referral Exchange</h2>
+    <p class="section-desc">
+      CLEAR is the first OLE module. It defines a structured, trackable, interoperable exchange
+      model for legal referrals — the smallest possible implementation of the largest possible vision.
+    </p>
+
+    <div class="thesis-block">
+      <p>"Roxana gets an HOA call she can't handle. She refers it to Maria. CLEAR makes that referral structured, trackable, and interoperable."</p>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>What CLEAR Defines</th>
+            <th>Details</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Referral workflow</td><td>5-stage workflow: Initiated → Sent → Acknowledged → Accepted/Declined → Closed</td></tr>
+          <tr><td>Status model</td><td>14 defined statuses with transition rules and fork/termination paths</td></tr>
+          <tr><td>Resource set</td><td>Referral, Prospect, MatterSummary, StatusUpdate, FeeArrangement, DocumentReference</td></tr>
+          <tr><td>Participant roles</td><td>Originating Attorney, Receiving Attorney, Client/Prospect, Supervisor, Observer, AI Agent</td></tr>
+          <tr><td>API surface</td><td>4 REST endpoints + webhook registration + 6 webhook event types</td></tr>
+          <tr><td>Consent</td><td>ConsentRecord required before personal data exchange</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="btn-group">
+      <a href="/clear/" class="btn btn-primary">CLEAR Module Details →</a>
+      <a href="/spec/" class="btn btn-outline">Full Specification</a>
+    </div>
+  </div>
+</section>
+
+<!-- Adoption Tiers -->
+<section>
+  <div class="container">
+    <div class="section-label">Adoption Model</div>
+    <h2 class="section-title">Start where you are.</h2>
+    <p class="section-desc">
+      OLE is designed for incremental adoption. Each level is independently useful.
+      v0.1 defines conformance profiles for Pre-Tier (Packet) and Tier 1 (Exchange).
+    </p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Level</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>v0.1 Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Pre-Tier</td>
+            <td><strong>Packet</strong></td>
+            <td>Read and write OLE JSON files</td>
+            <td><span class="badge badge-draft">Draft Profile</span></td>
+          </tr>
+          <tr>
+            <td>Tier 1</td>
+            <td><strong>Exchange</strong></td>
+            <td>Send and receive via RESTful API</td>
+            <td><span class="badge badge-draft">Draft Profile</span></td>
+          </tr>
+          <tr>
+            <td>Tier 2</td>
+            <td><strong>Identity</strong></td>
+            <td>Verified actors with portable credential-backed identities</td>
+            <td><span class="badge badge-planned">Planned v0.2</span></td>
+          </tr>
+          <tr>
+            <td>Tier 3</td>
+            <td><strong>Platform</strong></td>
+            <td>Vendor conformance declaration and interoperability</td>
+            <td><span class="badge badge-planned">Planned v0.2</span></td>
+          </tr>
+          <tr>
+            <td>Tiers 4–10</td>
+            <td><strong>Rules → Interoperability</strong></td>
+            <td>Rules, impact, citizens, transparency, feedback, automation, interoperability</td>
+            <td><span class="badge badge-planned">Future</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- Get Involved -->
+<section style="background:#f8fafc;">
+  <div class="container">
+    <div class="section-label">Community</div>
+    <h2 class="section-title">This is a public draft.<br>Your feedback matters.</h2>
+    <p class="section-desc">
+      v0.1 is a founding architecture — not a final specification. We are seeking review from
+      attorneys, practice management vendors, bar associations, government technologists,
+      AI governance practitioners, and anyone who believes the governance loop should be open.
+    </p>
+    <div class="btn-group">
+      <a href="https://github.com/openlegalexchange/ole/issues" class="btn btn-primary">File an Issue on GitHub →</a>
+      <a href="/spec/" class="btn btn-outline">Read the Spec</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <span class="brand-name">Open Legal Exchange</span>
+      <span>openlegalexchange.org</span>
+    </div>
+    <div class="footer-links">
+      <a href="/spec/">Specification</a>
+      <a href="/clear/">CLEAR Module</a>
+      <a href="https://github.com/openlegalexchange/ole">GitHub</a>
+      <a href="https://github.com/openlegalexchange/ole/blob/main/CONTRIBUTING.md">Contribute</a>
+      <a href="https://github.com/openlegalexchange/ole/blob/main/LICENSE">License (CC BY 4.0)</a>
+    </div>
+  </div>
+  <div class="footer-meta">
+    Founding Architecture v0.1, Public Draft for Comment · May 2026 ·
+    Specification text: CC BY 4.0 · Schemas and code: Apache 2.0 ·
+    Founded by Philippe Chaunu, CyVine LLC, Miami FL ·
+    Reference implementation: CertusGate
+  </div>
+</footer>
+
+</body>
+</html>
