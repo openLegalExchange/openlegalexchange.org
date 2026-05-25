@@ -568,6 +568,12 @@
   flex-wrap: wrap;
 }
 
+.dir-card-source {
+  font-size: 11px;
+  color: var(--muted);
+  text-align: right;
+}
+
 .btn-card-view {
   background: var(--navy);
   color: #fff;

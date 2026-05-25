@@ -1,0 +1,31 @@
+{
+  "_meta": {
+    "oleVersion": "0.1",
+    "resourceType": "OleNodeRegistry",
+    "description": "Registry of known OLE-compatible nodes that expose public attorney directory endpoints. The directory page fetches each active node's directorySearchEndpoint and merges results. Nodes must respond with CORS header: Access-Control-Allow-Origin: *",
+    "updatedAt": "2026-05-25T00:00:00Z"
+  },
+  "nodes": [
+    {
+      "id": "certusgate",
+      "provider": "CertusGate",
+      "providerUrl": "https://certusgate.com",
+      "discoveryUrl": "https://certusgate.com/.well-known/ole",
+      "directorySearch": false,
+      "directorySearchEndpoint": "https://certusgate.com/ole/v1/directory/actors",
+      "status": "pending",
+      "note": "CertusGate OLE node — endpoint pending implementation. Set directorySearch: true when live."
+    },
+    {
+      "id": "ole-sample",
+      "provider": "OLE Sample Data",
+      "providerUrl": "https://openlegalexchange.org",
+      "discoveryUrl": null,
+      "directorySearch": false,
+      "directorySearchEndpoint": null,
+      "localFallback": "data/attorneys.v0.1.json",
+      "status": "fallback",
+      "note": "Local sample data used as fallback when no live nodes are available. Set directorySearch: false to disable fallback entirely."
+    }
+  ]
+}

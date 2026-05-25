@@ -2,9 +2,11 @@
  * OLE CLEAR Attorney Directory — Client-Side Search
  * /attorneys/directory.js
  *
- * Loads profiles from /data/attorneys.v0.1.json and provides live search + filtering.
- * Structured so the data source can be replaced with /api/attorneys/search without
- * redesigning the page: swap loadProfiles() to use fetch('/api/attorneys/search').
+ * Loads profiles from registered OLE network nodes (data/nodes.json).
+ * For each node where directorySearch: true, fetches its directorySearchEndpoint
+ * and merges results. Falls back to the local JSON when no live nodes are active.
+ * To add a node: edit data/nodes.json and set directorySearch: true.
+ * CORS requirement: live nodes must respond with Access-Control-Allow-Origin: *
  */
 
 (function () {
@@ -18,6 +20,7 @@
   let activeFilters = {};
   let openModalProfile = null;
   let previousFocus = null;
+  let hasSampleProfiles = false;
 
   // ─── DOM References ────────────────────────────────────────────────────────
 
@@ -54,28 +57,103 @@
   // ─── Data Loading ─────────────────────────────────────────────────────────
 
   /**
-   * Load profiles from local JSON.
-   * To switch to API: replace this function body with:
-   *   const res = await fetch('/api/attorneys/search?' + new URLSearchParams(params));
-   *   return await res.json();
+   * Load profiles from registered OLE network nodes.
+   * Reads data/nodes.json → fetches each active node's directorySearchEndpoint →
+   * merges and de-duplicates results. Falls back to localFallback JSON if no
+   * live nodes return data.
    */
   async function loadProfiles() {
     showState('loading');
     try {
-      // Resolve path relative to site root regardless of current page depth
       const basePath = getBasePath();
-      const res = await fetch(basePath + 'data/attorneys.v0.1.json');
-      if (!res.ok) throw new Error('HTTP ' + res.status);
-      const data = await res.json();
-      allProfiles = (data.profiles || []).filter(
-        p => p.visibility && (p.visibility.scope === 'network_visible' || p.visibility.scope === 'public')
+
+      // Load node registry
+      let nodes = [];
+      try {
+        const nodesRes = await fetch(basePath + 'data/nodes.json');
+        if (nodesRes.ok) nodes = (await nodesRes.json()).nodes || [];
+      } catch (_) {
+        console.warn('[OLE Directory] Could not load nodes.json — using built-in fallback');
+      }
+
+      const liveNodes = nodes.filter(n => n.directorySearch && n.directorySearchEndpoint);
+      const fallbackNode = nodes.find(n => n.localFallback);
+
+      const merged = [];
+      let liveCount = 0;
+
+      // Fetch each live OLE node in parallel
+      const nodeResults = await Promise.allSettled(
+        liveNodes.map(async node => {
+          const res = await fetch(node.directorySearchEndpoint);
+          if (!res.ok) throw new Error('HTTP ' + res.status);
+          const data = await res.json();
+          // Nodes return { actors: [...] } per spec; also accept { profiles: [...] }
+          const actors = data.actors || data.profiles || [];
+          return actors
+            .filter(p => p.visibility &&
+              (p.visibility.scope === 'network_visible' || p.visibility.scope === 'public'))
+            .map(p => normalizeProfile(p, node));
+        })
       );
+
+      nodeResults.forEach((result, i) => {
+        if (result.status === 'fulfilled') {
+          merged.push(...result.value);
+          liveCount += result.value.length;
+        } else {
+          console.warn('[OLE Directory] Node failed:', liveNodes[i].provider, result.reason);
+        }
+      });
+
+      // Fall back to local JSON if no live data came in
+      if (liveCount === 0 && fallbackNode) {
+        try {
+          const res = await fetch(basePath + fallbackNode.localFallback);
+          if (res.ok) {
+            const data = await res.json();
+            const profiles = (data.profiles || [])
+              .filter(p => p.visibility &&
+                (p.visibility.scope === 'network_visible' || p.visibility.scope === 'public'))
+              .map(p => normalizeProfile(p, fallbackNode));
+            merged.push(...profiles);
+            console.info('[OLE Directory] No live nodes active — showing sample data fallback');
+          }
+        } catch (_) {
+          console.warn('[OLE Directory] Local fallback also failed');
+        }
+      }
+
+      // De-duplicate by id (same attorney may appear on multiple nodes)
+      const seen = new Set();
+      allProfiles = merged.filter(p => {
+        if (seen.has(p.id)) return false;
+        seen.add(p.id);
+        return true;
+      });
+
+      hasSampleProfiles = allProfiles.some(p => p.sampleProfile);
+      updateSampleNotice();
+
       showState('results');
       applyFiltersAndRender();
     } catch (err) {
       console.error('[OLE Directory] Failed to load profiles:', err);
       showState('error');
     }
+  }
+
+  /** Attach source metadata to a profile. */
+  function normalizeProfile(p, node) {
+    return Object.assign({}, p, {
+      _source: { provider: node.provider, nodeId: node.id },
+    });
+  }
+
+  /** Show or hide the sample data banner based on current profile set. */
+  function updateSampleNotice() {
+    const notice = document.getElementById('sample-data-notice');
+    if (notice) notice.hidden = !hasSampleProfiles;
   }
 
   /** Derive the site root path from current location. */
@@ -239,8 +317,7 @@
           <button class="btn-card-referral" disabled aria-label="Send structured referral — coming soon">
             Send referral <span class="coming-soon-tag" aria-hidden="true">soon</span>
           </button>
-        </div>
-      </div>
+        </div>        ${profile._source && !profile.sampleProfile ? `<div class="dir-card-source">via ${escHtml(profile._source.provider)}</div>` : ''}      </div>
     `;
 
     article.querySelector('.btn-card-view').addEventListener('click', () => openModal(profile));
