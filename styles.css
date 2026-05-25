@@ -668,3 +668,157 @@ footer {
   .spec-grid { grid-template-columns: 1fr; }
   .footer-inner { flex-direction: column; }
 }
+
+/* ── Draft Notice ── */
+
+.draft-notice {
+  background: #fef3c7;
+  border-left: 4px solid #f59e0b;
+  color: #78350f;
+  padding: 14px 20px;
+  border-radius: 0 var(--radius) var(--radius) 0;
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 24px 0;
+}
+
+.draft-notice strong {
+  display: block;
+  margin-bottom: 4px;
+  font-weight: 700;
+}
+
+/* ── Spec Card Links ── */
+
+.spec-card-links {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 14px;
+  flex-wrap: wrap;
+}
+
+.card-link-secondary {
+  font-size: 13px;
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.card-link-secondary:hover { color: var(--blue); text-decoration: underline; }
+
+/* ── Spec Reader ── */
+
+.spec-reader { padding: 48px 0 80px; }
+
+.spec-reader-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.spec-breadcrumb {
+  font-size: 13px;
+  color: var(--muted);
+  padding: 16px 0 0;
+}
+
+.spec-breadcrumb a { color: var(--blue); }
+
+.btn-sm { padding: 8px 16px; font-size: 13px; }
+
+/* ── Prose (spec reading view) ── */
+
+.prose { max-width: 740px; }
+
+.prose h1 { font-size: 2rem; font-weight: 800; margin: 0 0 24px; color: var(--navy); letter-spacing: -0.02em; }
+.prose h2 { font-size: 1.35rem; font-weight: 700; margin: 2.5em 0 0.75em; border-bottom: 1px solid var(--border); padding-bottom: 0.4em; color: var(--navy); }
+.prose h3 { font-size: 1.1rem; font-weight: 700; margin: 1.8em 0 0.5em; color: var(--navy); }
+.prose h4 { font-size: 1rem; font-weight: 700; margin: 1.5em 0 0.4em; color: var(--navy); }
+
+.prose p { margin: 0 0 1em; color: var(--text); line-height: 1.7; }
+
+.prose a { color: var(--blue); }
+
+.prose code {
+  background: rgba(29,111,164,0.08);
+  color: var(--navy);
+  padding: 1px 6px;
+  border-radius: 3px;
+  font-family: var(--font-mono);
+  font-size: 0.85em;
+}
+
+.prose pre {
+  background: #0f1e2e;
+  color: #d4e0ef;
+  padding: 20px;
+  border-radius: var(--radius);
+  overflow-x: auto;
+  margin: 1.5em 0;
+}
+
+.prose pre code { background: none; padding: 0; color: inherit; font-size: 13px; }
+
+.prose blockquote {
+  border-left: 4px solid var(--blue);
+  margin: 1.5em 0;
+  padding: 0.5em 1.2em;
+  color: var(--slate);
+  background: var(--bg-alt);
+  border-radius: 0 var(--radius) var(--radius) 0;
+}
+
+.prose ul, .prose ol { padding-left: 1.5em; margin: 0 0 1em; }
+.prose li { margin: 0.3em 0; line-height: 1.6; }
+
+.prose hr { border: none; border-top: 1px solid var(--border); margin: 2.5em 0; }
+
+.prose table { border-collapse: collapse; width: 100%; margin: 1.5em 0; font-size: 14px; }
+.prose table th { text-align: left; padding: 8px 12px; background: var(--bg-alt); font-size: 12px; font-weight: 700; letter-spacing: 0.04em; border-bottom: 2px solid var(--border); color: var(--navy); }
+.prose table td { padding: 8px 12px; border-bottom: 1px solid var(--border); vertical-align: top; }
+.prose table tbody tr:last-child td { border-bottom: none; }
+
+/* ── Table code overflow fix ── */
+.table-wrap td code { word-break: break-all; }
+
+/* ── Hover lifts (CSS transitions, complement Motion) ── */
+
+.primitive-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.primitive-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(15,34,64,0.10);
+  border-color: rgba(29,111,164,0.3);
+}
+
+.spec-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.spec-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(15,34,64,0.08);
+}
+
+.feature-list li {
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+.feature-list li:hover {
+  transform: translateY(-2px);
+  border-color: rgba(29,111,164,0.4);
+}
+
+.card-link {
+  transition: color 0.15s, gap 0.15s;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.card-link:hover { gap: 8px; }
+
+.btn { transition: background 0.15s, transform 0.15s, box-shadow 0.15s; }
+.btn:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,0,0,0.12); }
+.btn:active { transform: translateY(0); box-shadow: none; }

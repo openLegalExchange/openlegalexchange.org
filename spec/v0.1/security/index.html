@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Security Profile — OLE v0.1 Specification</title>
+  <meta name="description" content="OLE Security Profile v0.1 — transport security, authentication, webhook signing, data protection, consent, and audit requirements.">
+  <link rel="stylesheet" href="../../../styles.css">
+  <link rel="icon" href="/ole_favicon.png" type="image/png">
+</head>
+<body>
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="nav-brand">
+      <img src="/ole_favicon.png" class="nav-logo" alt="Open Legal Exchange">
+      <span class="nav-brand-text">
+        <span class="brand-name">Open Legal Exchange</span>
+        <span class="brand-tag">v0.1 Public Draft</span>
+      </span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="/spec/">Specification</a></li>
+      <li><a href="/clear/">CLEAR Module</a></li>
+      <li><a href="https://github.com/OpenLegalExchange/spec">GitHub</a></li>
+    </ul>
+  </div>
+</nav>
+<div class="container">
+  <p class="spec-breadcrumb"><a href="/spec/">Specification</a> &rsaquo; Security Profile</p>
+  <div class="draft-notice">
+    <strong>Public Draft Notice</strong>
+    OLE v0.1 is a founding architecture published for review and early implementation discussion. It is not a final technical standard, not a certification program, and not legal advice.
+  </div>
+</div>
+<main class="spec-reader">
+  <div class="container">
+    <div class="spec-reader-header">
+      <div>
+        <div class="spec-card-label">spec/v0.1</div>
+        <h1 style="margin:4px 0 0;font-size:1.8rem;color:var(--navy);">Security Profile</h1>
+      </div>
+      <a href="https://github.com/OpenLegalExchange/spec/blob/main/spec/v0.1/security.md"
+         class="btn btn-outline btn-sm" target="_blank" rel="noopener">View source on GitHub &rarr;</a>
+    </div>
+    <div id="spec-content" class="prose">
+      <p style="color:var(--muted);">Loading specification document&hellip;</p>
+    </div>
+  </div>
+</main>
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <span class="brand-name">Open Legal Exchange</span>
+      <span>openlegalexchange.org</span>
+    </div>
+    <div class="footer-links">
+      <a href="/">Home</a>
+      <a href="/spec/">Specification</a>
+      <a href="/clear/">CLEAR Module</a>
+      <a href="https://github.com/OpenLegalExchange/spec">GitHub</a>
+      <a href="https://github.com/OpenLegalExchange/spec/blob/main/LICENSE">License (CC BY 4.0)</a>
+    </div>
+  </div>
+  <div class="footer-meta">
+    Founding Architecture v0.1, Public Draft for Comment &middot; Last updated: May 25, 2026 &middot;
+    Specification text: CC BY 4.0 &middot; Schemas and code: Apache 2.0 &middot;
+    Founded by Philippe Chaunu, CyVine LLC, Miami FL
+  </div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/motion@latest/dist/motion.js"></script>
+<script src="/animations.js" defer></script>
+<script>
+  fetch('https://raw.githubusercontent.com/OpenLegalExchange/spec/main/spec/v0.1/security.md')
+    .then(r => { if (!r.ok) throw new Error(); return r.text(); })
+    .then(md => { document.getElementById('spec-content').innerHTML = marked.parse(md); })
+    .catch(() => {
+      document.getElementById('spec-content').innerHTML =
+        '<p>Document could not be loaded. <a href="https://github.com/OpenLegalExchange/spec/blob/main/spec/v0.1/security.md">Read on GitHub &rarr;</a></p>';
+    });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/marked@11/marked.min.js"></script>
+</body>
+</html>

@@ -22,7 +22,7 @@
     <ul class="nav-links">
       <li><a href="/spec/">Specification</a></li>
       <li><a href="/clear/">CLEAR Module</a></li>
-      <li><a href="https://github.com/openlegalexchange/ole">GitHub</a></li>
+      <li><a href="https://github.com/OpenLegalExchange/spec">GitHub</a></li>
     </ul>
   </div>
 </nav>
@@ -37,14 +37,21 @@
       It is the first OLE module and the primary implementation path in v0.1.
     </p>
     <div class="btn-group">
-      <a href="https://github.com/openlegalexchange/ole/blob/main/spec/v0.1/clear.md" class="btn btn-primary">Read the CLEAR Spec →</a>
-      <a href="https://github.com/openlegalexchange/ole/blob/main/openapi/v0.1/ole-clear-v0.1.yaml" class="btn btn-secondary">OpenAPI Spec</a>
+      <a href="https://github.com/OpenLegalExchange/spec/blob/main/spec/v0.1/clear.md" class="btn btn-primary">Read the CLEAR Spec →</a>
+      <a href="https://github.com/OpenLegalExchange/spec/blob/main/openapi/v0.1/ole-clear-v0.1.yaml" class="btn btn-secondary">OpenAPI Spec</a>
     </div>
     <div class="hero-draft">
       Public Draft for Comment · No production certification in v0.1 · openlegalexchange.org
     </div>
   </div>
 </section>
+
+<div class="container">
+  <div class="draft-notice">
+    <strong>Public Draft Notice</strong>
+    OLE v0.1 is a founding architecture published for review and early implementation discussion. It is not a final technical standard, not a certification program, and not legal advice.
+  </div>
+</div>
 
 <!-- The Problem -->
 <section style="background:#f8fafc;">
@@ -277,9 +284,11 @@
   "oleVersion": "0.1",
   "module": "clear",
   "createdAt": "2026-05-22T16:45:00-04:00",
-  "status": "sent",
-  "originatingActor": "ole_actor_roxana_tejeda",
-  "receivingActor": "ole_actor_maria_santos",
+  "status": "initiated",
+  "participants": [
+    { "role": "originating_attorney", "actorId": "ole_actor_roxana_tejeda" },
+    { "role": "receiving_attorney",  "actorId": "ole_actor_maria_santos" }
+  ],
   "matterSummary": {
     "practiceArea": "SALI:HOA-LAW",
     "jurisdiction": { "country": "US", "state": "FL" },
@@ -291,14 +300,13 @@
     "ruleReference": "FL Bar Rule 4-1.5",
     "percentage": 25
   },
-  "visibility": { "scope": "participant_visible" },
-  "extensions": {}
+  "visibility": { "scope": "participant_visible" }
 }</pre>
     </div>
 
     <div class="btn-group" style="margin-top:32px;">
-      <a href="https://github.com/openlegalexchange/ole/blob/main/examples/v0.1/referral-sent.json" class="btn btn-primary">Full Example →</a>
-      <a href="https://github.com/openlegalexchange/ole/blob/main/spec/v0.1/clear.md" class="btn btn-outline">CLEAR Specification</a>
+      <a href="https://github.com/OpenLegalExchange/spec/blob/main/examples/v0.1/referral-sent.json" class="btn btn-primary">Full Example →</a>
+      <a href="https://github.com/OpenLegalExchange/spec/blob/main/spec/v0.1/clear.md" class="btn btn-outline">CLEAR Specification</a>
     </div>
   </div>
 </section>
@@ -313,8 +321,8 @@
       The CLEAR Referral Tracker provides free lifetime accounts for verified attorneys.
     </p>
     <div class="btn-group">
-      <a href="https://github.com/openlegalexchange/ole/blob/main/spec/v0.1/clear.md" class="btn btn-primary">Read the Full CLEAR Spec →</a>
-      <a href="https://github.com/openlegalexchange/ole/blob/main/openapi/v0.1/ole-clear-v0.1.yaml" class="btn btn-outline">OpenAPI 3.1.0 Spec</a>
+      <a href="https://github.com/OpenLegalExchange/spec/blob/main/spec/v0.1/clear.md" class="btn btn-primary">Read the Full CLEAR Spec →</a>
+      <a href="https://github.com/OpenLegalExchange/spec/blob/main/openapi/v0.1/ole-clear-v0.1.yaml" class="btn btn-outline">OpenAPI 3.1.0 Spec</a>
     </div>
   </div>
 </section>
@@ -329,16 +337,18 @@
       <a href="/">Home</a>
       <a href="/spec/">Specification</a>
       <a href="/clear/">CLEAR Module</a>
-      <a href="https://github.com/openlegalexchange/ole">GitHub</a>
-      <a href="https://github.com/openlegalexchange/ole/blob/main/LICENSE">License (CC BY 4.0)</a>
+      <a href="https://github.com/OpenLegalExchange/spec">GitHub</a>
+      <a href="https://github.com/OpenLegalExchange/spec/blob/main/LICENSE">License (CC BY 4.0)</a>
     </div>
   </div>
   <div class="footer-meta">
-    Founding Architecture v0.1, Public Draft for Comment · May 2026 ·
+    Founding Architecture v0.1, Public Draft for Comment · Last updated: May 25, 2026 ·
     Specification text: CC BY 4.0 · Schemas and code: Apache 2.0 ·
     Founded by Philippe Chaunu, CyVine LLC, Miami FL · Reference implementation: CertusGate
   </div>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/motion@latest/dist/motion.js"></script>
+<script src="/animations.js" defer></script>
 </body>
 </html>
