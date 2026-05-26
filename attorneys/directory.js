@@ -346,7 +346,7 @@
           <div>
             <h3 class="dir-card-name">${escHtml(profile.displayName)}</h3>
             <p class="dir-card-firm">${escHtml(profile.firmName)}</p>
-            <p class="dir-card-location">${escHtml(profile.city)}, ${escHtml(profile.county)} · ${escHtml(profile.state)}</p>
+            <p class="dir-card-location">${(()=>{ const loc=[profile.city,profile.county].filter(Boolean).join(', '); return escHtml(loc)+(loc?' · ':'')+escHtml(profile.state); })()}</p>
           </div>
         </div>
         <div class="dir-card-badges">
@@ -739,6 +739,15 @@
       civil_litigation: 'Civil litigation',
       trust_administration: 'Trust administration',
       civil_rights: 'Civil rights',
+      commercial_closing: 'Commercial closing',
+      residential_closing: 'Residential closing',
+      entity_formation: 'Entity formation',
+      guardianship: 'Guardianship',
+      bankruptcy: 'Bankruptcy',
+      evictions: 'Evictions',
+      housing: 'Housing',
+      contracts: 'Contracts',
+      other: 'Other',
     };
     return map[key] || key;
   }
