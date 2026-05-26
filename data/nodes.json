@@ -12,9 +12,9 @@
       "providerUrl": "https://certusgate.com",
       "discoveryUrl": "https://certusgate.com/.well-known/ole",
       "directorySearch": true,
-      "directorySearchEndpoint": "https://certusgate.com/api/ole/v1/directory/actors",
+      "directorySearchEndpoint": "https://tejedalawgroup.certusgate.com/api/ole/v1/directory/actors",
       "status": "active",
-      "note": "CertusGate OLE node — live."
+      "note": "CertusGate OLE node — live. Per-tenant endpoint; platform-level endpoint TBD."
     },
     {
       "id": "ole-sample",

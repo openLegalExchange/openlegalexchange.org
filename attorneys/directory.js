@@ -82,18 +82,25 @@
       const merged = [];
       let liveCount = 0;
 
-      // Fetch each live OLE node in parallel
+      // Fetch each live OLE node in parallel (8s timeout per node)
       const nodeResults = await Promise.allSettled(
         liveNodes.map(async node => {
-          const res = await fetch(node.directorySearchEndpoint);
-          if (!res.ok) throw new Error('HTTP ' + res.status);
-          const data = await res.json();
-          // Nodes return { actors: [...] } per spec; also accept { profiles: [...] }
-          const actors = data.actors || data.profiles || [];
-          return actors
-            .filter(p => p.visibility &&
-              (p.visibility.scope === 'network_visible' || p.visibility.scope === 'public'))
-            .map(p => normalizeProfile(p, node));
+          const controller = new AbortController();
+          const timer = setTimeout(() => controller.abort(), 8000);
+          try {
+            const res = await fetch(node.directorySearchEndpoint, { signal: controller.signal });
+            clearTimeout(timer);
+            if (!res.ok) throw new Error('HTTP ' + res.status);
+            const data = await res.json();
+            // Nodes return { actors: [...] } per spec; also accept { profiles: [...] }
+            const actors = data.actors || data.profiles || [];
+            return actors
+              .filter(p => p.visibility &&
+                (p.visibility.scope === 'network_visible' || p.visibility.scope === 'public'))
+              .map(p => normalizeProfile(p, node));
+          } finally {
+            clearTimeout(timer);
+          }
         })
       );
 
@@ -143,11 +150,73 @@
     }
   }
 
-  /** Attach source metadata to a profile. */
+  /**
+   * Normalize a profile to the flat shape the renderer expects.
+   * Handles two formats:
+   *   - OLE network format (nested: name.display, jurisdiction.state, referralPreferences.*)
+   *   - Local JSON format (flat: displayName, state, acceptsReferrals, ...)
+   */
   function normalizeProfile(p, node) {
-    return Object.assign({}, p, {
-      _source: { provider: node.provider, nodeId: node.id },
-    });
+    const source = { provider: node.provider, nodeId: node.id };
+
+    // Already flat (local JSON format)
+    if (p.displayName) {
+      return Object.assign({}, p, { _source: source });
+    }
+
+    // OLE network format — map nested fields to flat
+    const name  = p.name || {};
+    const jur   = p.jurisdiction || {};
+    const prefs = p.referralPreferences || {};
+    const cred  = p.credentialSummary || {};
+
+    const displayName = name.display ||
+      [name.given, name.family].filter(Boolean).join(' ') || p.id;
+
+    const slug = displayName.toLowerCase()
+      .replace(/[',\.]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+
+    const credStatus = cred.credentialStatus || 'self_declared';
+    const prefMethod = prefs.preferredReferralMethod === 'ole_clear'
+      ? 'clear_packet' : (prefs.preferredReferralMethod || 'email');
+
+    return {
+      resourceType: 'DirectoryProfile',
+      id:           p.id,
+      oleVersion:   p.oleVersion || '0.1',
+      module:       'clear',
+      displayName,
+      slug,
+      firmName:     name.display || displayName,
+      city:         jur.city || '',
+      county:       (jur.counties && jur.counties[0]) || '',
+      state:        jur.state || '',
+      country:      jur.country || 'US',
+      practiceAreas:      p.practiceAreas || [],
+      practiceAreaLabels: (p.practiceAreas || []).map(practiceAreaLabel),
+      languages:      p.languages || [],
+      languageLabels: (p.languages || []).map(languageLabel),
+      acceptsReferrals:          prefs.acceptingReferrals || false,
+      attorneyToAttorneyOnly:    prefs.attorneyToAttorneyOnly || false,
+      clearEnabled:              prefs.clearEnabled || false,
+      acceptsDirectConsumerContact: false,
+      credentialStatus: credStatus,
+      credentialSummary: {
+        credentialType:     'bar_admission',
+        jurisdiction:       cred.barState || jur.state || '',
+        status:             'active',
+        verifiedAt:         cred.verifiedAt || null,
+        verificationSource: cred.verifiedAt ? 'public_bar_record' : 'self_declared',
+      },
+      referralPreferences: {
+        requiresClientConsentBeforeTransmission: false,
+        preferredReferralMethod: prefMethod,
+        notes: prefs.notes || '',
+      },
+      contact:    p.contact || {},
+      visibility: p.visibility || { scope: 'network_visible' },
+      _source: source,
+    };
   }
 
   /** Show or hide the sample data banner based on current profile set. */
