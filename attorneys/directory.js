@@ -186,6 +186,7 @@
       oleVersion:   p.oleVersion || '0.1',
       module:       'clear',
       displayName,
+      imageUrl:     (p.profile && p.profile.imageUrl) || p.imageUrl || null,
       slug,
       firmName:     name.display || displayName,
       city:         jur.city || '',
@@ -341,7 +342,7 @@
     article.innerHTML = `
       <div class="dir-card-top">
         <div class="dir-card-identity">
-          <div class="dir-card-avatar" aria-hidden="true">${initials(profile.displayName)}</div>
+          <div class="dir-card-avatar" aria-hidden="true">${avatarHtml(profile)}</div>
           <div>
             <h3 class="dir-card-name">${escHtml(profile.displayName)}</h3>
             <p class="dir-card-firm">${escHtml(profile.firmName)}</p>
@@ -684,6 +685,14 @@
 
   function initials(name) {
     return (name || '').split(' ').slice(0, 2).map(w => w[0]).join('').toUpperCase();
+  }
+
+  function avatarHtml(profile) {
+    if (profile.imageUrl) {
+      return `<img src="${escHtml(profile.imageUrl)}" alt="" class="dir-avatar-img" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+              <span class="dir-avatar-fallback" style="display:none">${escHtml(initials(profile.displayName))}</span>`;
+    }
+    return escHtml(initials(profile.displayName));
   }
 
   function formatVerifiedDate(iso) {
