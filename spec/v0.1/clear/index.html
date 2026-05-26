@@ -12,7 +12,7 @@
 <nav>
   <div class="nav-inner">
     <a href="/" class="nav-brand">
-      <img src="/ole_favicon.png" class="nav-logo" alt="Open Legal Exchange">
+      <img src="/favicon.png" class="nav-logo" alt="Open Legal Exchange">
       <span class="nav-brand-text">
         <span class="brand-name">Open Legal Exchange</span>
         <span class="brand-tag">v0.1 Public Draft</span>
@@ -69,6 +69,7 @@
 </footer>
 <script src="https://cdn.jsdelivr.net/npm/motion@latest/dist/motion.js"></script>
 <script src="/animations.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/marked@11/marked.min.js"></script>
 <script>
   fetch('https://raw.githubusercontent.com/OpenLegalExchange/spec/main/spec/v0.1/clear.md')
     .then(r => { if (!r.ok) throw new Error(); return r.text(); })
@@ -78,6 +79,4 @@
         '<p>Document could not be loaded. <a href="https://github.com/OpenLegalExchange/spec/blob/main/spec/v0.1/clear.md">Read on GitHub &rarr;</a></p>';
     });
 </script>
-<script src="https://cdn.jsdelivr.net/npm/marked@11/marked.min.js"></script>
-</body>
 </html>
