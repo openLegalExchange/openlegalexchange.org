@@ -1,5 +1,8 @@
 /* OLE — Open Legal Exchange — Site Stylesheet */
 
+/* Ensure the HTML hidden attribute always works regardless of display overrides */
+[hidden] { display: none !important; }
+
 :root {
   --navy: #0f2240;
   --navy-light: #1a3355;
