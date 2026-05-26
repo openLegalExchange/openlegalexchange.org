@@ -11,10 +11,10 @@
       "provider": "CertusGate",
       "providerUrl": "https://certusgate.com",
       "discoveryUrl": "https://certusgate.com/.well-known/ole",
-      "directorySearch": false,
-      "directorySearchEndpoint": "https://certusgate.com/ole/v1/directory/actors",
-      "status": "pending",
-      "note": "CertusGate OLE node — endpoint pending implementation. Set directorySearch: true when live."
+      "directorySearch": true,
+      "directorySearchEndpoint": "https://certusgate.com/api/ole/v1/directory/actors",
+      "status": "active",
+      "note": "CertusGate OLE node — live."
     },
     {
       "id": "ole-sample",
